@@ -26,7 +26,7 @@
                 </h2>
               <div class="card-body">
                 <p class="card-text"><?=$rep['content'] ?> </p>
-                <a href="#" class="btn btn-primary">lire plus</a>
+                <a href="post.php?id=<?=$rep['id'] ?>" class="btn btn-primary">lire plus</a>
               </div>
             </div>
       </article>

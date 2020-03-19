@@ -7,10 +7,6 @@ $query = 'SELECT * FROM category WHERE id='.$current_category_id;
 $current_category_result = $pdo->query($query);
 $current_category = $current_category_result->fetch();
 
- 
-
-
-
 
 ?>
 <!DOCTYPE html>
@@ -41,7 +37,7 @@ $current_category = $current_category_result->fetch();
 
 <?php
   // Requête pour récupérer tous les articles de la catégorie
- $query ='SELECT p.title,p.published_at, u.userName,p.id,p.category_id FROM post as p INNER JOIN user as u ON p.author_id = u.id WHERE category_id ='.$current_category_id; 
+ $query ='SELECT p.title,p.published_at, u.userName,p.id,p.category_id,p.content FROM post as p INNER JOIN user as u ON p.author_id = u.id WHERE category_id ='.$current_category_id; 
  $posts = $pdo->query($query);
 ?>
         <?php foreach ($posts as $post): ?>
@@ -52,7 +48,7 @@ $current_category = $current_category_result->fetch();
                         <span class="badge badge-secondary">[<?=$post['userName']?>]</span>
                     </h2>
                   <div class="card-body">
-                    <p class="card-text">[Résumé de l'article 1]</p>
+                    <p class="card-text"><?=$post['content'] ?></p>
                     <a href="post.php?id=<?=$post['id']?>" class="btn btn-primary" title="<?=$post['title']?>">Lire la suite de l'article 1</a>
                   </div>
                 </div>
