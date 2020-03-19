@@ -12,13 +12,15 @@ $current_category = $current_category_result->fetch();
 
 var_dump($current_category['name']);echo '<br />';
 
+
+
 ?>
 <!DOCTYPE html>
 <html lang="fr">
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>TP4 database — [Nom de la catégorie]</title>
+    <title>TP4 database — [<?=$current_category['name']?>]</title>
     <?php include('_head.php') ?>
   </head>
   <body>
@@ -27,12 +29,12 @@ var_dump($current_category['name']);echo '<br />';
     <div class="container">
       <section>
         <header>
-          <h1>[Nom de la catégorie]</h1>
+          <h1>[<?=$current_category['name']?>]</h1>
 
             <nav aria-label="breadcrumb" role="navigation">
               <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a href="index.php">Accueil</a></li>
-                <li class="breadcrumb-item active" aria-current="page">[Nom de la catégorie]</li>
+                <li class="breadcrumb-item active" aria-current="page">[<?=$current_category['name']?>]</li>
               </ol>
             </nav>
         </header>
@@ -41,14 +43,14 @@ var_dump($current_category['name']);echo '<br />';
 
 <?php
   // Requête pour récupérer tous les articles de la catégorie
-  $query = 'SELECT …';
-  //$posts = $pdo->query($query);
+  $query = 'SELECT * FROM `post` WHERE category_id ='.$current_category_id;
+  $posts = $pdo->query($query);
 ?>
-        <?php //foreach ($posts as $post): ?>
+        <?php foreach ($posts as $post): ?>
             <article>
                 <div class="card mt-3 mb-3">
                     <h2 class="card-header">
-                        [titre de l'article 1]
+                        [<?=$post['title']?>]
                         <span class="badge badge-secondary">[auteur de l'article 1]</span>
                     </h2>
                   <div class="card-body">
@@ -57,7 +59,7 @@ var_dump($current_category['name']);echo '<br />';
                   </div>
                 </div>
             </article>
-        <?php //endforeach ?>
+        <?php endforeach ?>
 
 
       </section>

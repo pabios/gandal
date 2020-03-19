@@ -1,0 +1,10 @@
+## requette preparer
+ne jamais donner un nom a la variable qu'on a execute 
+voici un bon exemple qui marche :
+    $commentUsers->execute(array(25));
+    $rep = $commentUsers->fetchAll();
+    foreach($rep as $c){
+    echo $c['userName'].'######';
+    }
+
+##
