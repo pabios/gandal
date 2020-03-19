@@ -1,16 +1,14 @@
 <?php
 require_once('_config.php');
+require('./function.php');
 
-$current_category_id = $_GET['id'];
-var_dump($current_category_id);echo '<br />';
-
+$current_category_id = getId();
 $query = 'SELECT * FROM category WHERE id='.$current_category_id;
-var_dump($query);echo '<br />';
-
 $current_category_result = $pdo->query($query);
 $current_category = $current_category_result->fetch();
 
-var_dump($current_category['name']);echo '<br />';
+ 
+
 
 
 
@@ -20,7 +18,7 @@ var_dump($current_category['name']);echo '<br />';
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>TP4 database — [<?=$current_category['name']?>]</title>
+    <title>categorie — [<?=$current_category['name']?>]</title>
     <?php include('_head.php') ?>
   </head>
   <body>
@@ -43,19 +41,19 @@ var_dump($current_category['name']);echo '<br />';
 
 <?php
   // Requête pour récupérer tous les articles de la catégorie
-  $query = 'SELECT * FROM `post` WHERE category_id ='.$current_category_id;
-  $posts = $pdo->query($query);
+ $query ='SELECT p.title,p.published_at, u.userName,p.id,p.category_id FROM post as p INNER JOIN user as u ON p.author_id = u.id WHERE category_id ='.$current_category_id; 
+ $posts = $pdo->query($query);
 ?>
         <?php foreach ($posts as $post): ?>
             <article>
                 <div class="card mt-3 mb-3">
                     <h2 class="card-header">
                         [<?=$post['title']?>]
-                        <span class="badge badge-secondary">[auteur de l'article 1]</span>
+                        <span class="badge badge-secondary">[<?=$post['userName']?>]</span>
                     </h2>
                   <div class="card-body">
                     <p class="card-text">[Résumé de l'article 1]</p>
-                    <a href="post.php?id=[article id]" class="btn btn-primary" title="[titre de l'article 1]">Lire la suite de l'article 1</a>
+                    <a href="post.php?id=<?=$post['id']?>" class="btn btn-primary" title="<?=$post['title']?>">Lire la suite de l'article 1</a>
                   </div>
                 </div>
             </article>

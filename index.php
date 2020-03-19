@@ -1,49 +1,36 @@
-<?php require_once('_config.php') ?>
+<?php
+   require_once('_config.php');
+   $req = 'SELECT * FROM post';
+   $reponse = $pdo->query($req);
+
+
+?>
 <!DOCTYPE html>
 <html lang="fr">
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>TP4 database</title>
+    <title>acceuil</title>
     <?php include('_head.php') ?>
   </head>
   <body>
     <?php include('_header.php') ?>
 
     <div class="container" >
+    <?php foreach($reponse as $rep): ?>
       <article>
 
             <div class="card mt-3 mb-3">
                 <h2 class="card-header">
-                    Card title
+                    <?=$rep['title'] ?>
                 </h2>
               <div class="card-body">
-                <p class="card-text">Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo.</p>
-                <a href="#" class="btn btn-primary">Go somewhere</a>
+                <p class="card-text"><?=$rep['content'] ?> </p>
+                <a href="#" class="btn btn-primary">lire plus</a>
               </div>
             </div>
-
-            <div class="card mb-3">
-                <h2 class="card-header">
-                    Card title
-                </h2>
-              <div class="card-body">
-                <p class="card-text">Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo.</p>
-                <a href="#" class="btn btn-primary">Go somewhere</a>
-              </div>
-            </div>
-
-            <div class="card mb-3">
-                <h2 class="card-header">
-                    Card title
-                </h2>
-              <div class="card-body">
-                <p class="card-text">Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo.</p>
-                <a href="#" class="btn btn-primary">Go somewhere</a>
-              </div>
-            </div>
-
       </article>
+    <?php endforeach; ?>
     </div>
 
     <?php include('_footer.php') ?>
