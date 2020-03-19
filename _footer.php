@@ -4,7 +4,7 @@
     <div class="row">
         <div class="col-sm">
           TP 4 - Bases de Données
-          <span class="badge badge-primary">Nathanaël Martel</span>
+          <span class="badge badge-primary">Ismaila Baldé</span>
           <a href="admin.php" class="text-white">admin</a>
         </div>
         <div class="col-sm text-right">
