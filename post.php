@@ -33,6 +33,7 @@ if(isset($_POST['envoyer'])){
       if ($result) {
           add_flash('success', 'Merci pour votre commentaire');
           header('Location: '.$root_url.'post.php?id='.$current_post['id']);//a revoire
+          die();
       }
     }
 }

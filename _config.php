@@ -2,12 +2,13 @@
 $begin_time = microtime(true);
 error_reporting(E_ALL);
 ini_set('display_errors', '1');
+session_start();
 
 $pdo = new PDO('mysql:host=localhost;dbname=pabios;charset=UTF8','pabios','pabios');
 
-session_start();
+
  //$root_url = 'http://tp4bdd.local/';
- $root_url = $_SERVER['HTTP_HOST'].'/';
+ $root_url = 'http://'.$_SERVER['HTTP_HOST'].'/';
 require_once('lib/flash.php');
 require_once('lib/i18n.php');
 /* echo '<pre>';
