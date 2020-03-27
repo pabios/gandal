@@ -5,20 +5,20 @@
 
 /* récupérer et afficher les commentaire relatif à l'article */
 
-$query = 'SELECT * FROM comment WHERE post_id='.$current_post['id'];
-$comment_result = $pdo->query($query);
+/* $query = 'SELECT * FROM comment WHERE post_id='.$current_post['id'];
+$comment_result = $pdo->query($query); */
 ?>
 
 
-<?php if ($comment_result->rowCount() > 0): ?>
+<?php if ($comment_result): ?>
     <?php foreach ($comment_result as $comment): ?>
         <div class="card mt-3 mb-3">
             <h2 class="card-header">
-                <?php echo $comment['name'] ?>
-                <span class="badge badge-secondary"><?php echo $comment['published_at'] ?></span>
+                <?php echo $comment->name ?>
+                <span class="badge badge-secondary"><?php echo $comment->published_at; ?></span>
             </h2>
           <div class="card-body">
-            <p class="card-text"><?php echo $comment['comment'] ?></p>
+            <p class="card-text"><?php echo $comment->comment; ?></p>
           </div>
         </div>
     <?php endforeach ?>

@@ -8,8 +8,34 @@ require_once ('./classes/App.php');
 require_once ('./classes/Table.php');
 require_once ('./classes/Post.php');
 require_once ('./classes/Category.php');
+require_once ('./classes/Comment.php');
 $app = new App();
 $app->getDb();
+$posts =Post::tout();
+$postCategoryMenu = Post::postCategoryMenu();
+$current_post = Post::currentPost();
+$currentCategory = Post::currentCategory();
+$postUser = Post::postUser();
+$comment_result = Comment::commentResult();
+$current_category = Category::currentCategory();
+$postCategory = Category::postCategory();
+
+ 
+
+
+/**
+ * pour gagner en temps faire une affection des varable du TP4 vers TP5(POO) si possible
+ */
+ 
+
+
+
+
+//fin affection 
+
+/* foreach($posts as $post){
+    echo '<br/>'.$post->title;
+} */
 /* echo '<pre>';
 var_dump($_SERVER);
 echo '</pre>'; 
@@ -18,8 +44,8 @@ die(); */
 
  $root_url = 'http://'.$_SERVER['HTTP_HOST'].'/';
 require_once('lib/flash.php');
-require_once('lib/i18n.php');
- 
+//require_once('lib/i18n.php');
+
 //var_dump($root_url);
 
 /*

@@ -12,8 +12,8 @@
         $this->login = $login;
         $this->pass = $pass;
         $this->host = $host;
-        echo 'succes';
     }
+      
     /**
      * permet d'initialiser une seul fois mon objet
      * meme avec plusieur requete faites a ma base de donner

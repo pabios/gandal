@@ -2,18 +2,19 @@
 require_once('_config.php');
 $post_id = $_GET['id'];
 
-$query = 'SELECT * FROM post WHERE post.id='.$pdo->quote($_GET['id']);
+//$query = 'SELECT * FROM post WHERE post.id='.$pdo->quote($_GET['id']);
 
 //var_dump($query);echo '<br />';
+ 
 
-$current_post_result = $pdo->query($query);
+//$current_post_result = $pdo->query($query);
 /* gestion article manquant : erreur 404 */
-if ($current_post_result->rowcount() == 0) {
+/* if ($current_post_result->rowcount() == 0) {
     add_flash('warning', 'Erreur 404 : l\'article n\'existe pas.');
     header('Location: '.$root_url);
-}
+} */
 
-$current_post = $current_post_result->fetch();
+//$current_post = $current_post_result->fetch();
 
 /**
  * traitement du formulaire de commentaire
@@ -32,22 +33,22 @@ if(isset($_POST['envoyer'])){
       $result = $pdo->exec($query);
       if ($result) {
           add_flash('success', 'Merci pour votre commentaire');
-          header('Location: '.$root_url.'post.php?id='.$current_post['id']);//a revoire
+          header('Location: '.$root_url.'post.php?id='.$current_post['id']);
           die();
       }
     }
 }
 
 
-$req = 'SELECT c.name,c.id FROM post as p INNER JOIN category as c ON c.id = p.category_id  WHERE p.id ='.$current_post['id'];
+/* $req = 'SELECT c.name,c.id FROM post as p INNER JOIN category as c ON c.id = p.category_id  WHERE p.id ='.$current_post['id'];
 $current_category_result =$pdo->query($req);
 $current_category = $current_category_result->fetch();
-//var_dump( $current_category);
+//var_dump( $current_category); */
 
 
-$req = 'SELECT p.title,p.content,p.published_at, u.userName,p.id,p.category_id FROM post as p INNER JOIN user as u ON p.author_id = u.id  WHERE p.id='.$current_post['id'];
+/* $req = 'SELECT p.title,p.content,p.published_at, u.userName,p.id,p.category_id FROM post as p INNER JOIN user as u ON p.author_id = u.id  WHERE p.id='.$current_post['id'];
 $postUserResult= $pdo->query($req);
-$postUser = $postUserResult->fetch();
+$postUser = $postUserResult->fetch(); */
  
 
 
@@ -57,7 +58,7 @@ $postUser = $postUserResult->fetch();
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>post — <?php echo $postUser['title'] ?></title>
+    <title>post — <?php echo $postUser->title; ?></title>
     <?php include('_head.php') ?>
   </head>
   <body>
@@ -66,24 +67,23 @@ $postUser = $postUserResult->fetch();
     <div class="container">
       <article>
         <header>
-          <h1><?php echo $postUser['title'] ?></h1>
-
+          <h1><?php echo $postUser->title; ?></h1>
           <nav aria-label="breadcrumb" role="navigation">
             <ol class="breadcrumb">
               <li class="breadcrumb-item"><a href="index.php">Accueil</a></li>
-              <li class="breadcrumb-item"><?php echo $current_category['name'] ?></li>
-              <li class="breadcrumb-item active" aria-current="page"><?php echo $postUser['title'] ?></li>
+              <li class="breadcrumb-item"><?php echo $currentCategory->name; ?></li>
+              <li class="breadcrumb-item active" aria-current="page"><?php echo $postUser->title; ?></li>
             </ol>
           </nav>
 
         </header>
 
         <div>
-          <?php echo $postUser['content'] ?>
+          <?php echo $postUser->content; ?>
         </div>
 
         <footer>
-          <p>Publié le <span class="label label-default"><?php echo $current_post['published_at'] ?></span> par <span class="label label-default"><?php echo $postUser['userName'] ?></span></p>
+          <p>Publié le <span class="label label-default"><?php echo $current_post->published_at; ?></span> par <span class="label label-default"><?php echo $postUser->userName; ?></span></p>
         </footer>
 
       </article>

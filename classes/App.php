@@ -20,6 +20,9 @@ class App{
 
         return self::$database;
     }
+    public static function tuerObjet(){
+        
+    }
     /**
      * bon pour les hackers
      *

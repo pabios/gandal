@@ -2,6 +2,7 @@
 //require_once './App.php';
 class Table{
     protected static $table;
+    protected static $getId;
 
 
     /**
@@ -45,6 +46,8 @@ class Table{
         }
         return static::$table;
     }
+    // bon a changer
+     
     /**
      * Permet de selectionner tout les champs d'une table x
      * avec la methode get_called_class() qui fera reference au pere au moment de l'appel

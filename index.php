@@ -1,7 +1,7 @@
 <?php
    require_once('_config.php');
-   $req = 'SELECT * FROM post';
-   $reponse = $pdo->query($req);
+   //$req = 'SELECT * FROM post';
+   //$reponse = $pdo->query($req);
 
 
 ?>
@@ -17,16 +17,16 @@
     <?php include('_header.php') ?>
 
     <div class="container" >
-    <?php foreach($reponse as $rep): ?>
+    <?php foreach($posts as $post): ?>
       <article>
 
             <div class="card mt-3 mb-3">
                 <h2 class="card-header">
-                    <?=$rep['title'] ?>
+                    <?=$post->title ?>
                 </h2>
               <div class="card-body">
-                <p class="card-text"><?=$rep['content'] ?> </p>
-                <a href="post.php?id=<?=$rep['id'] ?>" class="btn btn-primary">lire plus</a>
+                <p class="card-text"><?=$post->content ?> </p>
+                <a href="post.php?id=<?=$post->id ?>" class="btn btn-primary">lire plus</a>
               </div>
             </div>
       </article>
