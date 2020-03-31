@@ -23,14 +23,15 @@ class Comment extends Table{
        return  $root_url.'comment.php?id='.$this->id;
    }
 
-   public static function commentResult(){
-    //Post::currentPost()->id
-    return App::getDb()->maQuery("
-        SELECT * FROM ".static::$table."
-         comment WHERE post_id=".self::getId(),static::$table,false
+/**
+ * Permet d'afficher les 5 dernier commentaire d'un article
+ */
+  public static function commentResult(){
+       return App::getDb()->maPrepare("
+       SELECT * FROM comment WHERE post_id = ? ORDER BY id desc LIMIT 5",[self::getId()],static::$table,false
 
-        );
-   }
+       );
+   } 
     
    /**
     * traitement du formulaire 
@@ -38,6 +39,8 @@ class Comment extends Table{
    public static function insertComment(){
         if(isset($_POST['envoyer'])){
             if (isset($_POST['nom']) && isset($_POST['commentaire'])) {
+                App::add_flash('success', 'Merci pour votre commentaire');
+                App::show_flash();
                 extract($_POST);
                 $nom = htmlspecialchars($nom);
                 $commentaire = htmlspecialchars($commentaire);
@@ -46,12 +49,18 @@ class Comment extends Table{
                 $query ="
                 INSERT INTO comment (post_id, name, comment, published_at)
                 VALUES (?, ?, ?, NOW())";
-                return App::getDb()->insert(
+                 return App::getDb()->insert(
                     $query,self::getId(),$nom,$commentaire,static::$table
                 );
             }
         }
-        return App::add_flash('success', 'Merci pour votre commentaire');
+   }
+   /**
+     * Permet de faire une redirection 
+     */
+    public static function redirect(){
+        $root_url = 'http://'.$_SERVER['HTTP_HOST'].'/';
+        return header('Location:'.$root_url.'post.php?id='.self::getId());
    }
 
 

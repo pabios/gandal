@@ -60,7 +60,7 @@ $postUser = $postUserResult->fetch(); */
     <title>post — <?php echo $postUser->title; ?></title>
     <?php include('_head.php') ?>
   </head>
-  <body>
+  <body class="divRecharge">
     <?php include('_header.php') ?>
 
     <div class="container">
@@ -91,7 +91,12 @@ $postUser = $postUserResult->fetch(); */
         <?php require_once('_comments.php'); ?>
       </aside>
     </div>
-
+    <script>
+       setInterval(recharge(),10);
+      function recharge(){
+        $('.divRecharge').load('post.php?id=<?=$_GET['id']?>');
+      }
+    </script>
     <?php include('_footer.php') ?>
   </body>
 </html>

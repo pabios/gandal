@@ -9,23 +9,23 @@
 $comment_result = $pdo->query($query); */
 ?>
 
-
-<?php if ($comment_result): ?>
-    <?php foreach ($comment_result as $comment): ?>
-        <div class="card mt-3 mb-3">
-            <h2 class="card-header">
-                <?php echo $comment->name ?>
-                <span class="badge badge-secondary"><?php echo $comment->published_at; ?></span>
-            </h2>
-          <div class="card-body">
-            <p class="card-text"><?php echo $comment->comment; ?></p>
+<div id="divRecharge"> 
+  <?php if ($comment_result): ?>
+      <?php foreach ($comment_result as $comment): ?>
+          <div class="card mt-3 mb-3">
+              <h2 class="card-header">
+                  <?php echo $comment->name ?>
+                  <span class="badge badge-secondary"><?php echo $comment->published_at; ?></span>
+              </h2>
+            <div class="card-body">
+              <p class="card-text"><?php echo $comment->comment; ?></p>
+            </div>
           </div>
-        </div>
-    <?php endforeach ?>
-<?php else: ?>
-    <div class="alert alert-info" role="alert">Il n'y a pas encore de commentaire, soyez le premier !</div>
-<?php endif ?>
-
+      <?php endforeach ?>
+  <?php else: ?>
+      <div class="alert alert-info" role="alert">Il n'y a pas encore de commentaire, soyez le premier !</div>
+  <?php endif ?>
+</div>
 
 
 

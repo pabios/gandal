@@ -19,7 +19,7 @@ $postUser = Post::postUser();
 $comment_result = Comment::commentResult();
 $current_category = Category::currentCategory();
 $postCategory = Category::postCategory();
-$comment = Comment::insertComment();
+
 
 /**
  * pour gagner en temps faire une affection des varable du TP4 vers TP5(POO) si possible
@@ -35,7 +35,7 @@ die(); */
 //$pdo = new PDO('mysql:host=localhost;dbname=pabios;charset=UTF8','pabios','pabios');
 
  $root_url = 'http://'.$_SERVER['HTTP_HOST'].'/';
-require_once('lib/flash.php');
+ //require_once('lib/flash.php');
 //require_once('lib/i18n.php');
 
 //var_dump($root_url);

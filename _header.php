@@ -45,5 +45,12 @@
 </header>
 
 <div class="container" >
-<?php show_flash() ?>
+  <?php
+  Comment::insertComment();
+   $s =App::show_flash();
+  if(!empty($s)){ 
+   Comment::redirect();
+   die();
+  }
+    ?>
 </div>
