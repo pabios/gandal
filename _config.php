@@ -19,19 +19,11 @@ $postUser = Post::postUser();
 $comment_result = Comment::commentResult();
 $current_category = Category::currentCategory();
 $postCategory = Category::postCategory();
-
- 
-
+$comment = Comment::insertComment();
 
 /**
  * pour gagner en temps faire une affection des varable du TP4 vers TP5(POO) si possible
  */
- 
-
-
-
-
-//fin affection 
 
 /* foreach($posts as $post){
     echo '<br/>'.$post->title;

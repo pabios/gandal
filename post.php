@@ -5,7 +5,6 @@ $post_id = $_GET['id'];
 //$query = 'SELECT * FROM post WHERE post.id='.$pdo->quote($_GET['id']);
 
 //var_dump($query);echo '<br />';
- 
 
 //$current_post_result = $pdo->query($query);
 /* gestion article manquant : erreur 404 */
@@ -20,24 +19,24 @@ $post_id = $_GET['id'];
  * traitement du formulaire de commentaire
 */
 
-if(isset($_POST['envoyer'])){
+/* if(isset($_POST['envoyer'])){
 
-  if (isset($_POST['nom']) && isset($_POST['commentaire'])) {
-       extract($_POST);
-       $nom = htmlspecialchars($nom);
-       $commentaire = htmlspecialchars($commentaire);
+    if (isset($_POST['nom']) && isset($_POST['commentaire'])) {
+        extract($_POST);
+        $nom = htmlspecialchars($nom);
+        $commentaire = htmlspecialchars($commentaire);
 
 
-      // requête d'ajout du commentaire :
-      $query = sprintf('INSERT INTO comment (post_id, name, comment, published_at) VALUES (%s, %s, %s, NOW())', $current_post['id'], $pdo->quote($nom), $pdo->quote($commentaire));
-      $result = $pdo->exec($query);
-      if ($result) {
-          add_flash('success', 'Merci pour votre commentaire');
-          header('Location: '.$root_url.'post.php?id='.$current_post['id']);
-          die();
+        // requête d'ajout du commentaire :
+        $query = sprintf('INSERT INTO comment (post_id, name, comment, published_at) VALUES (%s, %s, %s, NOW())', $current_post['id'], $pdo->quote($nom), $pdo->quote($commentaire));
+        $result = $pdo->exec($query);
+        if ($result) {
+            add_flash('success', 'Merci pour votre commentaire');
+            header('Location: '.$root_url.'post.php?id='.$current_post['id']);
+            die();
+        }
       }
-    }
-}
+} */
 
 
 /* $req = 'SELECT c.name,c.id FROM post as p INNER JOIN category as c ON c.id = p.category_id  WHERE p.id ='.$current_post['id'];

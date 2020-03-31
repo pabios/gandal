@@ -12,10 +12,8 @@ class Comment extends Table{
             $getId = htmlspecialchars(intval($getId));
         }else{
            // echo 'patience je securise revien after';
-             
-           
+
         }
-       
         return   $getId;
 
     } 
@@ -27,11 +25,39 @@ class Comment extends Table{
 
    public static function commentResult(){
     //Post::currentPost()->id
-    return App::getDb()->MaQuery("
+    return App::getDb()->maQuery("
         SELECT * FROM ".static::$table."
          comment WHERE post_id=".self::getId(),static::$table,false
 
         );
    }
+    
+   /**
+    * traitement du formulaire 
+    */
+   public static function insertComment(){
+        if(isset($_POST['envoyer'])){
+            if (isset($_POST['nom']) && isset($_POST['commentaire'])) {
+                extract($_POST);
+                $nom = htmlspecialchars($nom);
+                $commentaire = htmlspecialchars($commentaire);
+                //$nom =App::getDb()->quote($nom); :) $pdo->quote($nom)
+                // requête d'ajout du commentaire :
+                $query ="
+                INSERT INTO comment (post_id, name, comment, published_at)
+                VALUES (?, ?, ?, NOW())";
+                return App::getDb()->insert(
+                    $query,self::getId(),$nom,$commentaire,static::$table
+                );
+            }
+        }
+        return App::add_flash('success', 'Merci pour votre commentaire');
+   }
+
+
+
+
+
+
 
 }

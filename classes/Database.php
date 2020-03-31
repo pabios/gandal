@@ -63,5 +63,19 @@
         }
         return $data;
      }
+     /**
+      * Permet d'ajouter un enregistrement avec une requte prepare
+      * @param statement la requete
+      * @param className MA CLASSE
+      * @param nb le nombre d'enregistrement que je veut avec true pour le fetch
+      * @param arg les argument de ma requete
+      */
+      public function insert($statement,$arg1,$arg2,$arg3,$className){
+        $req = $this->getPdo()->prepare($statement);
+        $req->execute(array($arg1,$arg2,$arg3));
+        $req->setfetchMode(PDO::FETCH_CLASS,$className);
+
+        return 1;
+     }
 }
 ?>
