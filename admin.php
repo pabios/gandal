@@ -1,21 +1,25 @@
 <?php
 
 require_once('_config.php');
+/**
+ * Fichier totalement en Procedurales
+ */
+$pdo = new PDO('mysql:host=localhost;dbname=pabios;charset=UTF8','pabios','pabios');
 
-$categories = $pdo->query('SELECT * FROM category');
+ $categories = $pdo->query('SELECT * FROM category');
 $posts = $pdo->query('SELECT * FROM post');
 $comments = $pdo->query('SELECT * FROM comment');
-$users = $pdo->query('SELECT distinct  * FROM user');
+$users = $pdo->query('SELECT distinct  * FROM user'); 
 /**
  * jointure entre la table commentaire et la table User
  */
-$commentUsers =$pdo->prepare('SELECT u.userName,c.id FROM comment as c INNER JOIN user as u ON c.author_id = u.id WHERE c.id =? ');
+ $commentUsers =$pdo->prepare('SELECT u.userName,c.id FROM comment as c INNER JOIN user as u ON c.author_id = u.id WHERE c.id =? ');
 
 /**
  * jointure entre la table la  post et la table USER
  */
 $userPost= $pdo->prepare('SELECT  u.id,u.userName, u.email,count(p.id) as nbPost FROM post as p RIGHT OUTER JOIN user as u ON p.author_id = u.id WHERE u.id = ? GROUP BY u.id  ');
- 
+
 /**
  * jointure entre post et USER dans la table post en query
  */

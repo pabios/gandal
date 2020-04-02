@@ -2,13 +2,15 @@
 $begin_time = microtime(true);
 error_reporting(E_ALL);
 ini_set('display_errors', '1');
-session_start();
+//session_start(); // j'ai une session already sent dans ma page search donc a revenir after
 require_once ('./classes/Database.php');
 require_once ('./classes/App.php');
 require_once ('./classes/Table.php');
 require_once ('./classes/Post.php');
 require_once ('./classes/Category.php');
 require_once ('./classes/Comment.php');
+require_once ('./classes/User.php');    
+require_once ('./classes/Admin.php');    
 $app = new App();
 $app->getDb();
 $posts =Post::tout();
@@ -19,6 +21,7 @@ $postUser = Post::postUser();
 $comment_result = Comment::commentResult();
 $current_category = Category::currentCategory();
 $postCategory = Category::postCategory();
+
 
 
 /**

@@ -47,13 +47,13 @@ class Table{
         return static::$table;
     }
     // bon a changer
-     
+
     /**
      * Permet de selectionner tout les champs d'une table x
      * avec la methode get_called_class() qui fera reference au pere au moment de l'appel
      */
     public static function tout(){
-        return App::getDb()->MaQuery("
+        return App::getDb()->maQuery("
         SELECT *
         FROM ".static::$table."
         ",get_called_class());
