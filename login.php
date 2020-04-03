@@ -1,21 +1,13 @@
 <?php
 session_start();
 require_once ('lib/flash.php');
-
-/**
- * Fichier totalement en Procedurales
- */
-  $pdo = new PDO('mysql:host=localhost;dbname=pabios;charset=UTF8','pabios','pabios');
-
+require_once ('./connect.php');
     if(isset($_POST['login'])){
         if(!empty($_POST['tel']) AND !empty($_POST['mdp1']) ){
             $tel = htmlspecialchars($_POST['tel']);
             $mdp1 = htmlspecialchars($_POST['mdp1']);
             $mdp1 = crypt($mdp1,'zifou_De_Guinee');
-
-             
             $req = $pdo->query("SELECT id,userName,password FROM user WHERE telephone = $tel");
-             
             $verif = $req->fetch();
 
              if($mdp1 == $verif['password']){
@@ -25,9 +17,8 @@ require_once ('lib/flash.php');
                 $_SESSION['nom'] = $verif['userName'];
 
                 header('Location:profile.php?id='.$_SESSION['id']);
-                 
              }else{
-                $flash = 'votre mot de passe est incorect';
+                $flash = 'votre mot de passe ou votre numero est incorect';
                 $typeFlash ='danger';
              }
 

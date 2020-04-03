@@ -2,11 +2,9 @@
     session_start();
     setlocale(LC_TIME, ['fr','fra','fr_FR']);
     require_once ('lib/flash.php');
+     require_once ('./connect.php');
    
-    /**
-    * Fichier totalement en Procedurales
-    */
-    $pdo = new PDO('mysql:host=localhost;dbname=pabios;charset=UTF8','pabios','pabios');
+    
     $reqPost = $pdo->query('SELECT id,title,content,published_at FROM post');
      
     //$reqSup = $pdo->prepare(' SELECT id FROM post'); 

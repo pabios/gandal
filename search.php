@@ -1,11 +1,9 @@
  <?php
 //require_once ('_config.php');
 require_once ('lib/flash.php');
+require_once ('./connect.php');
 
-/**
- * Fichier totalement en Procedurales
- */
-$pdo = new PDO('mysql:host=localhost;dbname=pabios;charset=UTF8','pabios','pabios');
+ 
 $post = $pdo->query('SELECT title,content FROM post ');
 //post en cas d'une recherche de mot qui n'existe pas 
 $postPropose = $pdo->query('SELECT title,content from post where id = 1');

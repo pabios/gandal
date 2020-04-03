@@ -1,11 +1,8 @@
 <?php
     session_start();
     require_once ('lib/flash.php');
-   
-    /**
-    * Fichier totalement en Procedurales
-    */
-    $pdo = new PDO('mysql:host=localhost;dbname=pabios;charset=UTF8','pabios','pabios');
+    require_once ('./connect.php');
+    
     $reqPost = $pdo->query('SELECT id,title,content,published_id FROM post');
 
     //$reqSup = $pdo->prepare(' SELECT id FROM post'); 

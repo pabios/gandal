@@ -2,11 +2,7 @@
 ob_start();
 session_start();
 require_once ('lib/flash.php');
-
-/**
- * Fichier totalement en Procedurales
- */
-$pdo = new PDO('mysql:host=localhost;dbname=pabios;charset=UTF8','pabios','pabios');
+require_once ('./connect.php');
 
     if(isset($_POST['sign'])){
         if(!empty($_POST['nom']) AND !empty($_POST['tel']) AND !empty($_POST['mdp1']) AND !empty($_POST['mdp2'])){

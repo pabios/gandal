@@ -1,10 +1,11 @@
 <?php
 
-require_once('_config.php');
+require_once ('_config.php');
 /**
  * Fichier totalement en Procedurales
  */
-$pdo = new PDO('mysql:host=localhost;dbname=pabios;charset=UTF8','pabios','pabios');
+require_once ('./connect.php');
+
 
  $categories = $pdo->query('SELECT * FROM category');
 $posts = $pdo->query('SELECT * FROM post');
