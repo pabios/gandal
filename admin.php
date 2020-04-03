@@ -68,7 +68,7 @@ $postUser = $pdo->prepare('SELECT u.userName, COUNT(p.id) as nbPost FROM user as
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>admi</title>
+    <title>admin</title>
     <?php include('_head.php') ?>
   </head>
   <body>

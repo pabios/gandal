@@ -9,13 +9,15 @@
 $comment_result = $pdo->query($query); */
 ?>
 
-<div id="divRecharge"> 
+<div id="divRecharge">
   <?php if ($comment_result): ?>
       <?php foreach ($comment_result as $comment): ?>
+      <?php $datePost = ucfirst(strftime('%A, le %d ',strtotime($comment->published_at)));
+            $datePost .=ucfirst(strftime(' %B %Y',strtotime($comment->published_at)));?>
           <div class="card mt-3 mb-3">
               <h2 class="card-header">
                   <?php echo $comment->name ?>
-                  <span class="badge badge-secondary"><?php echo $comment->published_at; ?></span>
+                  <span class="badge badge-secondary"><?php echo $datePost; ?></span>
               </h2>
             <div class="card-body">
               <p class="card-text"><?php echo $comment->comment; ?></p>

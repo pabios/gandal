@@ -1,5 +1,8 @@
 
 <style>
+/*
+* Permet de mettre le footer tout en bas de page en eliminant les matges initiaux
+*/
 html{
   position:relative;
   min-height: 100%;
@@ -20,7 +23,7 @@ html{
     <div class="container" >
       <div class="row">
           <div class="col-sm">
-            TP 5 - Bases de Données
+            &copy;  <a class="text-white" href="index.php"><?php echo 'Pabiosoft'; ?></a> - 2020
             <span class="badge badge-primary">Ismaila Baldé</span>
             <a href="admin.php" class="text-white">admin</a>
           </div>

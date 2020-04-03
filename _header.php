@@ -43,6 +43,9 @@
             <input name ="searchIn" class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
             <button name = "doSearch" class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
           </form>
+          <span class="material-icons" class="nav-link">
+            <a href="./login.php" style="margin-left:15%"> <img src="./assets/images/2x/icone.png" alt="login"></a>
+          </span>
        </div>
 </div>
      </nav>

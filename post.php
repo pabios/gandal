@@ -1,5 +1,6 @@
 <?php
 require_once('_config.php');
+setlocale(LC_TIME, ['fr','fra','fr_FR']);
 $post_id = $_GET['id'];
 
 //$query = 'SELECT * FROM post WHERE post.id='.$pdo->quote($_GET['id']);
@@ -82,7 +83,9 @@ $postUser = $postUserResult->fetch(); */
         </div>
 
         <footer>
-          <p>Publié le <span class="label label-default"><?php echo $current_post->published_at; ?></span> par <span class="label label-default"><?php echo $postUser->userName; ?></span></p>
+                      <?php $datePost = ucfirst(strftime('%A, le %d ',strtotime($current_post->published_at)));
+                        $datePost .=ucfirst(strftime(' %B %Y',strtotime($current_post->published_at)));?>
+          <p>Publié le <span class="label label-default"><?php echo  $datePost; ?></span> par <span class="label label-default"><?php echo $postUser->userName; ?></span></p>
         </footer>
 
       </article>
