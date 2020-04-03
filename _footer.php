@@ -26,6 +26,7 @@ html{
             &copy;  <a class="text-white" href="index.php"><?php echo 'Pabiosoft'; ?></a> - 2020
             <span class="badge badge-primary">Ismaila Baldé</span>
             <a href="admin.php" class="text-white">admin</a>
+            <a href="user-admin.php" class="text-white">| user-admin</a>
           </div>
           <div class="col-sm text-right">
             <?php echo sprintf('Cette page a été générée en %f microsecondes.', (microtime(true)-$begin_time)*1000*1000) ?>
