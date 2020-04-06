@@ -16,6 +16,9 @@
            <li class="nav-item active">
                <a class="nav-link" href="index.php">Accueil</a>
            </li>
+           <li class="nav-item active">
+               <a class="nav-link" href="index.php">Hebergement</a>
+           </li>
            <?php foreach($postCategoryMenu as $pcm): ?>
           <?php if(getId() != $pcm->id):?>
           <li class="nav-item ">
@@ -38,10 +41,24 @@
                    </a>
                </li>
            <?php endforeach;*/ ?>
-         </ul>
+         </ul> 
+         <!--
          <form action="./search.php" method="GET" class="form-inline my-2 my-lg-0" >
             <input name ="searchIn" class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
             <button name = "doSearch" class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+          </form>
+          -->
+          <form action="./search.php" method="GET" class="form-inline my-2 my-lg-0" >
+
+            <!-- Another variation with a button -->
+            <div class="input-group">
+                <input type="text" name ="searchIn" class="form-control" placeholder="votre Recherche..">
+                <div class="input-group-append">
+                  <button class="btn btn-secondary" type="submit" name = "doSearch">
+                    <i class="fa fa-search"></i>
+                  </button>
+                </div>
+              </div>
           </form>
           <span class="material-icons" class="nav-link">
             <a href="./login.php" style="margin-left:15%"> <img src="./assets/images/2x/icone.png" alt="login"></a>
@@ -49,9 +66,14 @@
        </div>
 </div>
      </nav>
+     
 </header>
 
+
 <div class="container" >
+
+
+  
   <?php
   Comment::insertComment();
    $s =App::show_flash();

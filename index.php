@@ -17,6 +17,9 @@
     <?php include('_header.php') ?>
 
     <div class="container" >
+    <div class="alert alert-info alert-dismissable">
+          <a class="panel-close close" data-dismiss="alert">×</a> Bienvenue parmi la comunauté <strong>pabiosoft</strong>: ce site web est en cours de developpement click sur <a href="./cloud.php">hebergement</a>  pour heberger ton site .
+       </div>
     <?php foreach($posts as $post): ?>
       <article>
 
