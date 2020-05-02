@@ -1,8 +1,10 @@
 <?php
     require_once('./_config.php');
     require_once('./function.php');
-    //$postCategoryMenu = $pdo->query('SELECT  COUNT(p.id) as nb ,c.id,c.name  FROM category as c INNER JOIN post as p ON c.id = p.category_id  GROUP BY c.id');
+    include_once ('./i18n/local.php');
 
+    //$postCategoryMenu = $pdo->query('SELECT  COUNT(p.id) as nb ,c.id,c.name  FROM category as c INNER JOIN post as p ON c.id = p.category_id  GROUP BY c.id');
+     
 ?>
 <header>
     <nav class="navbar navbar-expand-md navbar-dark bg-info mb-4">
@@ -17,7 +19,7 @@
                <a class="nav-link" href="index.php">Accueil</a>
            </li>
            <li class="nav-item active">
-               <a class="nav-link" href="index.php">Hebergement</a>
+               <a class="nav-link" href="./cloud.php">Hebergement</a>
            </li>
            <?php foreach($postCategoryMenu as $pcm): ?>
           <?php if(getId() != $pcm->id):?>

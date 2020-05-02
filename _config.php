@@ -2,7 +2,6 @@
 $begin_time = microtime(true);
 error_reporting(E_ALL);
 ini_set('display_errors', '1');
-//session_start(); // j'ai une session already sent dans ma page search donc a revenir after
 require_once ('./classes/Database.php');
 require_once ('./classes/App.php');
 require_once ('./classes/Table.php');

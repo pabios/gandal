@@ -1,5 +1,6 @@
 <?php
-   require_once('_config.php');
+   require_once ('_config.php');
+   
    //$req = 'SELECT * FROM post';
    //$reponse = $pdo->query($req);
 
@@ -14,27 +15,32 @@
     <?php include('_head.php') ?>
   </head>
   <body>
-    <?php include('_header.php') ?>
-
-    <div class="container" >
-    <div class="alert alert-info alert-dismissable">
-          <a class="panel-close close" data-dismiss="alert">×</a> Bienvenue parmi la comunauté <strong>pabiosoft</strong>: ce site web est en cours de developpement click sur <a href="./cloud.php">hebergement</a>  pour heberger ton site .
-       </div>
-    <?php foreach($posts as $post): ?>
-      <article>
-
-            <div class="card mt-3 mb-3">
-                <h2 class="card-header">
-                    <?=$post->title ?>
-                </h2>
+    <?php include('_header.php'); ?>
+    <?php include('./include/slider.php'); ?>
+    <div class="container" > 
+        <div class="alert alert-info alert-dismissable">
+              <a class="panel-close close" data-dismiss="alert">×</a> Bienvenue parmi la comunauté <strong>pabiosoft</strong>: ce site web est en cours de developpement click sur <a href="./cloud.php">hebergement</a>  pour heberger ton site .
+          </div>
+          
+        <?php foreach($posts as $post): ?> 
+        <div class="card-deck">
+            <div class="card" style="width: 20rem;">
+              <img class="card-img-top" src="./assets/images/slide1.jpg" alt="Card image cap">
               <div class="card-body">
-                <p class="card-text"><?=$post->content ?> </p>
-                <a href="post.php?id=<?=$post->id ?>" class="btn btn-primary">lire plus</a>
+                    <h5 class="card-title"> <?=$post->title ?></h5>
+                    <ul class="list-group list-group-flush">
+                    <li class="list-group-item">update : <?=$post->published_at; ?></li>
+                  </ul>
+                    <a href="post.php?id=<?=$post->id ?>" class="btn btn-primary">Lire plus</a>
               </div>
             </div>
-      </article>
-    <?php endforeach; ?>
+        </div>
+          <?php endforeach; ?>
+          
+          
     </div>
+
+    
 
     <?php include('_footer.php') ?>
   </body>

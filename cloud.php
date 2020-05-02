@@ -51,7 +51,8 @@
   <body>
     <?php include('_header.php') ?>
 
-    <div class="container" >
+ <div class="container" >    
+    <!-- fin annonce -->
     <?php if(isset($msg) AND $msg == true):?>
         <div class="alert alert-info alert-dismissable">
                         <a class="panel-close close" data-dismiss="alert">×</a> Feliciation votre domaine <strong><?=$result['nomDomaine']?>.pabiosoft.com</strong>: est disponible  nous vous contacterons par email ou whatSAPP d'ici 24h pour finaliser votre comande.
@@ -65,8 +66,8 @@
     <form method ="POST" action="">
   <div class="form-row">
     <div class="col-md-4 mb-3">
-      <label for="validationDefault01">Votre Start-up</label>
-      <input type="text" name="societe" class="form-control" id="validationDefault01" placeholder="le nom"   required>
+      <label for="validationDefault01">Votre technologie utiliser</label>
+      <input type="text" name="societe" class="form-control" id="validationDefault01" placeholder="php,wordPress etc.."   required>
     </div>
     <div class="col-md-4 mb-3">
       <label for="validationDefault02">Le nom de votre site</label>
@@ -105,9 +106,43 @@
   </div>
   <button class="btn btn-primary" name ="demande" type="submit">Envoyer ma Demande</button>
 </form>
-      </div>
- 
-
       
+ <!--debut annonce --> 
+ <div class="card-group">
+  <div class="card">
+    <img src="./assets/images/serveur.jpeg" class="card-img-top" alt="...">
+    <div class="card-body">
+      <h5 class="card-title">Hebergement WEB SENEGAL</h5>
+      <p class="card-text">   UNe année d'hebergement A seulement 5 000 CFA (en une fois) ou 500 CFA pendant 12 mois</p>
+      <p class="card-text"><small class="text-muted">seulement chez <a href="./index.php">  pabiosoft.com </a></small></p>
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item">1 Go Base de Donnée Mysql</li>
+        <li class="list-group-item"> 1 Adresse Email Offerte</li>
+        <li class="list-group-item">Un Acces FTP </li>
+    </ul>
+  <div class="card-footer">
+      <small class="text-muted">Envie de Partager ? Rejoind la Team Pabios  sur <a href="https://discord.gg/dZqgXHy"> discord</a></small>
+  </div>
+  </div>
+  </div>
+  <div class="card">
+  <div class="card">
+    <img src="./assets/images/serveur.jpeg" class="card-img-top" alt="...">
+    <div class="card-body">
+      <h5 class="card-title">Hebergement WEB GUINEE</h5>
+      <p class="card-text">   UNe année d'hebergement A seulement 75 000 GNF (en une fois) ou 8000 GNF pendant 12 mois</p>
+      <p class="card-text"><small class="text-muted">seulement chez <a href="./index.php">  pabiosoft.com </a></small></p>
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item">1 Go Base de Donnée Mysql</li>
+        <li class="list-group-item"> 1 Adresse Email Offerte</li>
+        <li class="list-group-item">Un Acces FTP </li>
+    </ul>
+  <div class="card-footer">
+      <small class="text-muted">Envie de Partager ? Rejoind la Team Pabios  sur <a href="https://discord.gg/dZqgXHy"> discord</a></small>
+  </div>
+  </div>
+  </div>
+</div>
+     </div>
   </body>
 </html>
