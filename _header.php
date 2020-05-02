@@ -1,7 +1,7 @@
 <?php
     require_once('./_config.php');
     require_once('./function.php');
-    include_once ('./i18n/local.php');
+  
 
     //$postCategoryMenu = $pdo->query('SELECT  COUNT(p.id) as nb ,c.id,c.name  FROM category as c INNER JOIN post as p ON c.id = p.category_id  GROUP BY c.id');
      
