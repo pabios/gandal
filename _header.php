@@ -7,7 +7,7 @@
      
 ?>
 <header>
-    <nav class="navbar navbar-expand-md navbar-dark bg-info mb-4">
+    <nav class="navbar fixed-top navbar-expand-md navbar-dark bg-info mb-4">
         <div class="container">
        <a class="navbar-brand" href="index.php"><?php echo 'pabiosoft'; ?></a>
        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
