@@ -2,7 +2,7 @@
 session_start();
 require_once ('lib/flash.php');
 require_once ('./connect.php');
-
+     
   if(!empty($_SESSION['id'])){
       $sid = $_SESSION['id'];
      $categories = $pdo->query('SELECT * FROM category');
@@ -29,11 +29,13 @@ require_once ('./connect.php');
                             echo '<pre>';
                             var_dump($reponses);
                          echo'</pre>';
-            
        }
-      
+    }else{
+        $flash = '👹 Hey Pirate Merci de rentrer par la vrai <a href="./login.php">porte 🚪</a> ';
+        $typeFlash ='danger';
+        
     }
-
+    
 
 
 ?>
@@ -42,13 +44,22 @@ require_once ('./connect.php');
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-   
     <title><?= $data['userName'] ?></title>
     <?php include('_head.php') ?>
   </head>
   <body class="text-center" id="divRecharge">
   <?php include('_header.php') ?>
 <div class="container" >
+
+<?php
+
+        if(!empty($flash)){
+             add_flash($typeFlash,$flash);
+            show_flash();
+            die();
+        }
+     ?>
+     
     <div class="row my-2">
         <div class="col-lg-8 order-lg-2">
             <ul class="nav nav-tabs">

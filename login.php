@@ -2,30 +2,24 @@
 session_start();
 require_once ('lib/flash.php');
 require_once ('./connect.php');
+
     if(isset($_POST['login'])){
         if(!empty($_POST['tel']) AND !empty($_POST['mdp1']) ){
             $tel = htmlspecialchars($_POST['tel']);
             $mdp1 = htmlspecialchars($_POST['mdp1']);
             $mdp1 = crypt($mdp1,'zifou_De_Guinee');
-            $req = $pdo->query("SELECT id,userName,password FROM user WHERE telephone = $tel");
+            $req = $pdo->query("SELECT id,userName,`password` FROM user WHERE telephone = $tel");
             $verif = $req->fetch();
-
              if($mdp1 == $verif['password']){
-                $flash = 'PAGE PROFILE';
-                $typeFlash ='success';
                 $_SESSION['id'] = $verif['id'];
                 $_SESSION['nom'] = $verif['userName'];
-
                 header('Location:profile.php?id='.$_SESSION['id']);
+                die();
              }else{
                 $flash = 'votre mot de passe ou votre numero est incorect';
                 $typeFlash ='danger';
              }
 
-            /* echo '<pre>';
-                var_dump($rverif);
-            echo'</pre>'; */
-            
         }
     }
 
@@ -43,12 +37,7 @@ require_once ('./connect.php');
   <?php include('_header.php') ?>
   
     <div class="container">
-    <?php
-        if(!empty($flash)){
-             add_flash($typeFlash,$flash);
-            show_flash();
-        }
-     ?>
+     
         <form class="form-signin" method="post" >
             <img class="mb-4" src="./assets/images/favicon/android-chrome-192x192.png" alt="" width="72" height="72">
             <h1 class="h3 mb-3 font-weight-normal">connection</h1>

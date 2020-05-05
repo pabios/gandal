@@ -49,8 +49,23 @@
     <?php include('_head.php') ?>
   </head>
   <body>
-    <?php include('_header.php') ?>
-
+    <?php include ('_header.php') ?>
+<style>      
+     body{
+        padding-top:60px;
+    }
+    /* fix padding under menu after resize */
+    @media screen and (max-width: 767px) {
+        body { padding-top: 60px; }
+    }
+    @media screen and (min-width:768px) and (max-width: 991px) {
+        body { padding-top: 110px; }
+    }
+    @media screen and (min-width: 992px) {
+        body { padding-top: 60px; }
+    }
+</style>
+ 
  <div class="container" >    
     <!-- fin annonce -->
     <?php if(isset($msg) AND $msg == true):?>
@@ -63,8 +78,8 @@
             <a class="panel-close close" data-dismiss="alert">×</a>  votre domaine <strong><?=$result['nomDomaine']?>.pabiosoft.com</strong>:  est deja vendu veuillez trouver un autre
         </div>
     <?php endif;?>
-    <form method ="POST" action="">
-  <div class="form-row">
+    <form method ="POST" action="" >
+  <div class="form-row mx-auto" class="mx-auto">
     <div class="col-md-4 mb-3">
       <label for="validationDefault01">Votre technologie utiliser</label>
       <input type="text" name="societe" class="form-control" id="validationDefault01" placeholder="php,wordPress etc.."   required>
@@ -100,8 +115,8 @@
     <div class="form-check">
       <input class="form-check-input" type="checkbox" value="" id="invalidCheck2" required>
       <label class="form-check-label" for="invalidCheck2">
-         je confirme être un Etudiant et veux heberger ce site pour une durée d'une année minimale
-      </label>
+      &#128400 je certifie être un Etudiant et veux heberger ce site pour une durée de 12 mois
+      </label> 
     </div>
   </div>
   <button class="btn btn-primary" name ="demande" type="submit">Envoyer ma Demande</button>

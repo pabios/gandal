@@ -19,7 +19,7 @@
     <?php include('./include/slider.php'); ?>
     <div class="container" > 
         <div class="alert alert-info alert-dismissable">
-              <a class="panel-close close" data-dismiss="alert">×</a> Bienvenue parmi la comunauté <strong>pabiosoft</strong>: ce site web est en cours de developpement click sur <a href="./cloud.php">hebergement</a>  pour heberger ton site .
+              <a class="panel-close close" data-dismiss="alert">×</a> &#128400     Bonjour soit le bienvenue.   Bien que ce site est en cours de développement tu peux dors et déjà  <a href="./cloud.php">héberger</a> ton site.
           </div>
           
         <?php foreach($posts as $post): ?> 
@@ -36,8 +36,6 @@
             </div>
         </div>
           <?php endforeach; ?>
-          
-          
     </div>
 
     

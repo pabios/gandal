@@ -9,7 +9,7 @@
       <img class="d-block w-100" src="/assets/images/slide1.jpg" alt="First slide">
     </div>
     <div class="carousel-item">
-      <img class="d-block w-100" src="/assets/images/slide2.jpg" alt="Second slide">
+      <img class="d-block w-100" src="/assets/images/slide1.jpg" alt="Second slide">
     </div>
      
   </div>
