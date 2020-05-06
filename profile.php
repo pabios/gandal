@@ -2,7 +2,6 @@
 session_start();
 require_once ('lib/flash.php');
 require_once ('./connect.php');
-     
   if(!empty($_SESSION['id'])){
       $sid = $_SESSION['id'];
      $categories = $pdo->query('SELECT * FROM category');
@@ -26,10 +25,25 @@ require_once ('./connect.php');
             $reponses = $pdo->query(sprintf('UPDATE user SET userName=%s,telephone=%s,password=%s,town=%s,email=%s 
                             WHERE id=%s', $pdo->quote($nom),$pdo->quote($tel),$pdo->quote($mdp1),
                             $pdo->quote($ville),$pdo->quote($email), $sid));
-                            echo '<pre>';
-                            var_dump($reponses);
-                         echo'</pre>';
        }
+       /**
+        * DebuT UPLOAD file
+        */
+       if(isset($_POST['envoyer'])){
+           var_dump($_FILES);
+       }
+
+
+
+
+
+
+
+
+
+
+
+
     }else{
         $flash = '👹 Hey Pirate Merci de rentrer par la vrai <a href="./login.php">porte 🚪</a> ';
         $typeFlash ='danger';
@@ -142,7 +156,7 @@ require_once ('./connect.php');
                         <a class="panel-close close" data-dismiss="alert">×</a> This is an <strong>.alert</strong>. Use this to show important messages to the user.
                     </div>
                     <table class="table table-hover table-striped">
-                        <tbody>                                    
+                        <tbody>
                             <tr>
                                 <td>
                                    <span class="float-right font-weight-bold">3 hrs ago</span> Here is your a link to the latest summary report from the..
@@ -168,7 +182,7 @@ require_once ('./connect.php');
                                    <span class="float-right font-weight-bold">9/4</span> Maxamillion ais the fix for tibulum tincidunt ullamcorper eros. 
                                 </td>
                             </tr>
-                        </tbody> 
+                        </tbody>
                     </table>
                 </div>
                 <div class="tab-pane" id="edit">
@@ -182,7 +196,7 @@ require_once ('./connect.php');
                         <div class="form-group row">
                             <label class="col-lg-3 col-form-label form-control-label">Email</label>
                             <div class="col-lg-9">
-                                <input class="form-control" type="email" name="email" value="<?=$data['email'] ?>">
+                                <input class="form-control" type="email" name="email" placeholder="<?=$data['email'] ?>">
                             </div>
                         </div>
                         <div class="form-group row">
@@ -252,12 +266,15 @@ require_once ('./connect.php');
             </div>
         </div>
         <div class="col-lg-4 order-lg-1 text-center">
-            <img src="//placehold.it/150" class="mx-auto img-fluid img-circle d-block" alt="avatar">
-            <h6 class="mt-2">Upload a different photo</h6>
-            <label class="custom-file">
-                <input type="file" id="file" class="custom-file-input">
-                <span class="custom-file-control">Choose file</span>
-            </label>
+            <form  method ="POST" enctype="multipart/from-data">
+                <img src="//placehold.it/150" class="mx-auto img-fluid img-circle d-block" alt="avatar">
+                <h6 class="mt-2">Upload a different photo</h6>
+                <label class="custom-file">
+                    <input type="file" name="fichier" id="file" class="custom-file-input">
+                    <span class="custom-file-control">Choose file</span>
+                    <input type="submit" name="envoyer" value="enregistrer">
+                </label>
+            </form>
         </div>
     </div>
 </div>
