@@ -34,10 +34,41 @@ require_once ('./connect.php');
     <?php include('_head.php') ?>
   </head>
   <body class="text-center">
+  <style>
+    body {
+    padding-top: 60px;
+}
+
+
+/* fix padding under menu after resize */
+
+@media screen and (max-width: 767px) {
+    body {
+        padding-top: 60px;
+    }
+}
+
+@media screen and (min-width:768px) and (max-width: 991px) {
+    body {
+        padding-top: 110px;
+    }
+}
+
+@media screen and (min-width: 992px) {
+    body {
+        padding-top: 60px;
+    }
+}
+  </style>
   <?php include('_header.php') ?>
   
     <div class="container">
-     
+    <?php
+        if(!empty($flash)){
+             add_flash($typeFlash,$flash);
+            show_flash();
+        }
+     ?>
         <form class="form-signin" method="post" >
             <img class="mb-4" src="./assets/images/favicon/android-chrome-192x192.png" alt="" width="72" height="72">
             <h1 class="h3 mb-3 font-weight-normal">connection</h1>

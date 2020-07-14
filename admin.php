@@ -61,7 +61,10 @@ $postUserForArticle= $pdo->query('SELECT p.title,p.published_at, u.userName,p.id
  */
 $postUser = $pdo->prepare('SELECT u.userName, COUNT(p.id) as nbPost FROM user as u LEFT OUTER JOIN post as p ON u.id = p.author_id WHERE u.id >=1 or u.id IS null GROUP BY u.userName');
 
-
+/**
+ * Affichage des nouveau demande d'hebergement
+ */
+$clouds = $pdo->query('SELECT * from cloud');
 
 ?>
 <!DOCTYPE html>
@@ -73,6 +76,32 @@ $postUser = $pdo->prepare('SELECT u.userName, COUNT(p.id) as nbPost FROM user as
     <?php include('_head.php') ?>
   </head>
   <body>
+  <style>
+    body {
+            padding-top: 60px;
+        }
+
+
+        /* fix padding under menu after resize */
+
+        @media screen and (max-width: 767px) {
+            body {
+                padding-top: 60px;
+            }
+        }
+
+        @media screen and (min-width:768px) and (max-width: 991px) {
+            body {
+                padding-top: 110px;
+            }
+        }
+
+        @media screen and (min-width: 992px) {
+            body {
+                padding-top: 60px;
+            }
+        }
+  </style>
     <?php include('_header.php') ?>
 
     <div class="container" >
@@ -242,6 +271,41 @@ $postUser = $pdo->prepare('SELECT u.userName, COUNT(p.id) as nbPost FROM user as
               </div>
             </article>
 
+            
+            <!-- hebergement -->
+            <article>
+          <div class="card mb-3 border-info">
+              <div class="card-header text-white bg-info">Hebergement</div>
+              <table class="table table-striped table-hover">
+                <thead>
+                  <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Nom Domaine</th>
+                    <th scope="col">Techonologie</th>
+                    <th scope="col">email</th>
+                    <th scope="col">Date</th>
+                  </tr>
+                </thead>
+                <tbody>
+                    <?php
+                          foreach ($clouds as $cloud):
+                      ?>
+                          <tr>
+                            <th scope="row"><?=$cloud['id'] ?></th>
+                            <td>
+                                <a href="http://<?=$cloud['nomDomaine'] ?>.pabiosoft.com">
+                                    <?=$cloud['nomDomaine'] ?>
+                                </a>
+                            </td>
+                            <td><?=$cloud['societe'] ?></td>
+                            <td><?=$cloud['email'] ?></td>
+                            <td><?=$cloud['dateAjout']?></td>
+                          </tr>
+                      <?php endforeach; ?>
+                </tbody>
+              </table>
+          </div>
+        </article>
 
 
     </div>

@@ -115,6 +115,21 @@ class Post extends Table {
         );
     }
 
+    /**
+     * Permet d'afficher un nombre de mots definie d'un article
+     */
+    public function afficheMots($texte,$mots){
+       $StringTab=explode(" ",$texte);
+       $NewString = " ";
+       for($i=0;$i < $mots;$i++) {
+          $NewString.=" "."$StringTab[$i]";
+       }
+
+        // ajoute 3 points de suspension a la fin
+         $NewString.=" ...";
+        return $NewString;   
+    } 
+
 
 
 
