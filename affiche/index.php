@@ -1,30 +1,5 @@
 <?php 
-    require_once ('./connect.php');
-    // $clouds = $pdo->query('SELECT distinct  * FROM cloud'); 
-   $msg = false;
-    if(isset($_POST['envoyer'])){
-        if (isset($_POST['nom']) && isset($_POST['tel'])  && isset($_POST['pact']) && isset($_POST['message'])  ) {
-            
-            extract($_POST);
-            $nom = htmlspecialchars($nom);
-            $tel = htmlspecialchars($tel);
-            $pact = htmlspecialchars($pact);
-            $message = htmlspecialchars($message);
-    
-            $nom = 'le nom :'.$nom;
-            $tel = 'le telephone :'.$tel;
-            $pact = 'le pacte :'.$pact;
-            $message = 'le message :'.$message;
-            
-            $query ="
-            INSERT INTO cloud (nomDomaine,extension,societe,email,author_id)
-            VALUES (?, ?, ?, ?, ?)";
-            $req = $pdo->prepare($query);
-            $req->execute(array($nom,$pact,$message,$tel,25));
-            $msg = true;
-        }
-    }
-  
+    include ('./requete.php');
 ?>
 <!DOCTYPE html>
 <html lang="FR">
@@ -34,7 +9,7 @@
         <meta name="description" content="" />
         <meta name="author" content="" />
         <title>Pabiosoft</title>
-        <link rel="icon" href="./assets/images/favicon/favicon.ico"/>
+        <link rel="icon" type="image/x-icon" href="assets/img/favicon.ico" />
         <!-- Font Awesome icons (free version)-->
         <script src="https://use.fontawesome.com/releases/v5.12.1/js/all.js" crossorigin="anonymous"></script>
         <!-- Google fonts-->
@@ -42,15 +17,13 @@
         <link href="https://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic,700italic" rel="stylesheet" type="text/css" />
         <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700" rel="stylesheet" type="text/css" />
         <!-- Core theme CSS (includes Bootstrap)-->
-        <link href="./affiche/css/styles.css" rel="stylesheet" />
-        <link href="./affiche/css/prix.css" rel="stylesheet" />
-
+        <link href="css/styles.css" rel="stylesheet" />
+        <link href="css/prix.css" rel="stylesheet" />
     </head>
     <body id="page-top">
         <!-- Navigation-->
         <nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav">
             <div class="container">
-            
                 <a class="navbar-brand js-scroll-trigger" href="#page-top">Pabiosoft</a><button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">Menu<i class="fas fa-bars ml-1"></i></button>
                 <div class="collapse navbar-collapse" id="navbarResponsive">
                     <ul class="navbar-nav text-uppercase ml-auto">
@@ -64,12 +37,6 @@
         <!-- Masthead-->
         <header class="masthead">
             <div class="container">
-                <?php if (isset($msg)): ?>
-                    <div class="alert alert-info alert-dismissable">
-                        <a class="panel-close close" data-dismiss="alert">&#128400</a>      Votre message a bien ETE envoyer. Nous vous conctacterons grace a vos informations saisis 
-                    </div>
-
-                <?php endif; ?>
                 <div class="masthead-subheading">agence web design et marketing digital</div>
                 <div class="masthead-heading text-uppercase">Ravi de vous rencontrer</div>
                 <div class="masthead-subheading">                
